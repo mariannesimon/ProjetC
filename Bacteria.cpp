@@ -62,7 +62,8 @@ void Bacteria::replace(const Bacteria& bact)
   to_divide_ = false;
 }
 
-void Bacteria::dead(Env& env){
+void Bacteria::dead(Env& env)
+{
   alive_ = false;
   to_die_ = false;
   env.set_ca(x_, y_, env.a_out(x_, y_) + a_);
@@ -70,10 +71,12 @@ void Bacteria::dead(Env& env){
   env.set_cc(x_, y_, env.c_out(x_, y_) + c_);
 }
 
-void Bacteria::mutate(){
-  if ( alive_ && divided_ ){
+void Bacteria::mutate()
+{
+  if ( alive_ && divided_ )
+  {
     double p = (double)rand() / (double)RAND_MAX;
-    if ( p < pmut_ )
+    if (p < pmut_)
     {
       if (gen_ == 0) gen_ = 1;
       else gen_ = 0;
@@ -82,7 +85,8 @@ void Bacteria::mutate(){
   }
 }
 
-void Bacteria::divide(){
+void Bacteria::divide()
+{
   a_ = a_/2;
   b_ = b_/2;
   c_ = c_/2;
@@ -91,10 +95,11 @@ void Bacteria::divide(){
   set_fitness();
 }
 
-void Bacteria::met_a(Env& env, double Raa, double Rab){
+void Bacteria::met_a(Env& env, double Raa, double Rab)
+{
   double a_out = env.a_out(x_, y_);
   double dt = 0.1;
-  for ( int i = 0; i < 10; i++ )
+  for (int i = 0; i < 10; i++)
   {
     double na_out = a_out + dt*(-a_out*Raa);
     double na = a_ + dt*(a_out*Raa - a_*Rab);
@@ -106,10 +111,11 @@ void Bacteria::met_a(Env& env, double Raa, double Rab){
   env.set_ca(x_, y_, a_out);
 }
 
-void Bacteria::met_b(Env& env, double Rbb, double Rbc){
+void Bacteria::met_b(Env& env, double Rbb, double Rbc)
+{
   double b_out = env.b_out(x_, y_);
   double dt = 0.1;
-  for ( int i = 0; i < 10; i++ )
+  for (int i = 0; i < 10; i++)
   {
     double nb_out = b_out + dt*(-b_out*Rbb);
     double nb = b_ + dt*(b_out*Rbb - b_*Rbc);
@@ -122,37 +128,45 @@ void Bacteria::met_b(Env& env, double Rbb, double Rbc){
 }
 
 void Bacteria::metabolize(Env& env,
-                          double Raa, double Rab, double Rbb, double Rbc){
+                          double Raa, double Rab, double Rbb, double Rbc)
+{
   if ( alive_ )
   {
     if ( gen_==0 ) met_a(env, Raa, Rab);
     else met_b(env, Rbb, Rbc);
     set_fitness();
   }
+//  std::cout << gen_ << " > " << a_ << " " << b_ << " " << c_ << " | "
+//  << env.a_out(x_, y_) << " " << env.b_out(x_, y_) << " " <<
+//  env.c_out(x_, y_) << "\n";
 }
 
 //===================================================================
 //                          Setters
 //===================================================================
 
-void Bacteria::reinitialize(){
+void Bacteria::reinitialize()
+{
   mutated_ = false;
   divided_ = false;
   to_divide_ = false;
   to_die_ = false;
 }
 
-void Bacteria::set_fitness(){
-  if ( gen_ == 0 ) fitness_ = b_;
+void Bacteria::set_fitness()
+{
+  if (gen_ == 0) fitness_ = b_;
   else fitness_ = c_;
-  if ( fitness_ < fmin_ ) fitness_ = 0;
+  if (fitness_ < fmin_) fitness_ = 0;
 }
 
-void Bacteria::to_die(){
+void Bacteria::to_die()
+{
   to_die_ = true;
 }
 
-void Bacteria::to_divide(){
+void Bacteria::to_divide()
+{
   to_divide_ = true;
 }
 
@@ -160,11 +174,13 @@ void Bacteria::to_divide(){
 //                          Getters
 //===================================================================
 
-bool Bacteria::will_die() const{
+bool Bacteria::will_die() const
+{
   return to_die_;
 }
 
-bool Bacteria::will_divide() const{
+bool Bacteria::will_divide() const
+{
   return to_divide_;
 }
 

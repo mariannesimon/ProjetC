@@ -1,7 +1,7 @@
 rm(list=ls())
 library(ggplot2)
 
-data = read.table("phasesuite.txt")
+data = read.table("phase1conc.txt")
 T = data$V1
 A_init = data$V2
 Ga = data$V3

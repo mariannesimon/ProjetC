@@ -18,8 +18,8 @@ int main() {
   //======================================================================
   
   //  std::string pname = "params.txt";
-  std::string pname = "/Users/Marianne/Desktop/3BIM/ProjetC++/ProjetC++/params.txt";
-  std::string fname = "phasesuiteconc.txt";
+  std::string pname = "/Users/Marianne/Desktop/3BIM/ProjetC++/params.txt";
+  std::string fname = "phase2.txt";
   std::ifstream params (pname.c_str(), std::ios::in);
   std::ofstream output (fname.c_str(), std::ios::out | std::ios::trunc);
   
@@ -31,37 +31,37 @@ int main() {
   int w, h, tsim;
   params >> Raa >> Rab >> Rbb >> Rbc >>
             pmut >> pdeath >> w >> h >> d >> fmin >> tsim;
-//  int T = 25;
-//  int a_init = 1;
   
   //======================================================================
   //                          Tests
   //======================================================================
-  
+
+  int T = 25;
+  int a_init = 1;
 //  Env env(w, h, d, a_init);
 //  Bacteria bact(5, 5, 0, 0.01, 0);
 //  bact.metabolize(env, Raa, Rab, Rbb, Rbc);
 //  Population pop(w, h, pmut, pdeath, fmin);
 //  pop.metabolism(env, Raa, Rab, Rbb, Rbc);
+  Simulation sim(tsim, T, w, h, d, a_init, pmut, pdeath, fmin, Raa, Rab, Rbb, Rbc);
+  sim.save("init.ppm");
+  sim.run();
+  sim.save("fin.ppm");
   
   //======================================================================
   //                          Simulation
   //======================================================================
  
-//  Simulation sim(tsim, T, w, h, d, a_init, pmut, pdeath, fmin, Raa, Rab, Rbb, Rbc);
-//  sim.save("init.ppm");
-//  sim.run();
-//  sim.save("fin.ppm");
-   for (int T = 501; T <= 800; T += 5)
-   {
-     for (int a_init = 0; a_init <= 50; a_init += 1)
-     {
-       Simulation sim(tsim, T, w, h, d, a_init, pmut, pdeath, fmin, Raa, Rab, Rbb, Rbc);
-       sim.run();
-       output << T << " " << a_init << " " << sim.gen_a() <<
-         " " << sim.gen_b() << "\n";
-       std::cout << T << "   " << a_init << "\n";
-     }
-   }
-  return 0;
+//   for (int T = 1; T <= 1500; T += 10)
+//   {
+//     for (int a_init = 0; a_init <= 50; a_init += 1)
+//     {
+//       Simulation sim(tsim, T, w, h, d, a_init, pmut, pdeath, fmin, Raa, Rab, Rbb, Rbc);
+//       sim.run();
+//       output << T << " " << a_init << " " << sim.gen_a() <<
+//         " " << sim.gen_b() << "\n";
+//       std::cout << T << "   " << a_init << "\n";
+//     }
+//   }
+//  return 0;
 }

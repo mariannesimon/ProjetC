@@ -116,18 +116,23 @@ inline int Population::gaps_size() const
 inline void Population::gen() {
   gen_a_ = 0;
   gen_b_ = 0;
-  for ( int i = 0; i < bact; i++ ){
-    if ( pop_[i].alive() )
+  for (int i = 0; i < bact; i++)
+  {
+    if (pop_[i].alive())
     {
-      if ( pop_[i].gen() == 0 ) gen_a_ += 1;
+      if (pop_[i].gen() == 0) gen_a_ += 1;
       else gen_b_ += 1;
     }
   }
 }
-inline int Population::gen_a() const{
+
+inline int Population::gen_a() const
+{
   return gen_a_;
 }
-inline int Population::gen_b() const{
+
+inline int Population::gen_b() const
+{
   return gen_b_;
 }
 

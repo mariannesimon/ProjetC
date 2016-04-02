@@ -21,20 +21,16 @@ Simulation::~Simulation() {}
 
 void Simulation::run()
 {
-  for ( int i = 0; i < tsim_; i++ )
+  for (int i = 0; i < tsim_; i++)
   {
-	  if ( i%T_ == 0 )
-    {
-      env_.reinitialize();
-    }
+    std::cout << "Itération : " << i << "\n";
+	  if (i%T_ == 0) env_.reinitialize();
     pop_.reinitialize();
     env_.diff();
     pop_.death_select();
     pop_.division();
     pop_.death(env_);
     pop_.metabolism(env_,Raa_,Rab_,Rbb_,Rbc_);
-//    std::cout << env_.a_out(5, 5) << " " << env_.b_out(5, 5) <<
-//    " " << env_.c_out(5, 5) << "\n";
   }
 }
 

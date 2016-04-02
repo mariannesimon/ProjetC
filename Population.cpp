@@ -12,8 +12,10 @@ Population::Population(int w, int h, double pmut, double pdeath, double fmin)
   w_ = w;
   h_ = h;
   pop_.resize(bact);
-  for (int x = 0; x<w_; x++){
-    for (int y = 0; y<h_; y++){
+  for (int x = 0; x<w_; x++)
+  {
+    for (int y = 0; y<h_; y++)
+    {
       int gen = rand()&1;
       pop_[x*h_+y] = Bacteria(x,y,gen,fmin,pmut);
     }
@@ -23,7 +25,8 @@ Population::Population(int w, int h, double pmut, double pdeath, double fmin)
   img_ = new unsigned char[w*h*3];
 }
 
-Population::~Population(){
+Population::~Population()
+{
   delete[] img_;
 }
 
@@ -31,8 +34,10 @@ Population::~Population(){
 //                          Setters
 //===================================================================
 
-void Population::reinitialize(){
-  for (int i=0; i<bact; i++){
+void Population::reinitialize()
+{
+  for (int i=0; i<bact; i++)
+  {
     pop_[i].reinitialize();
   }
 }
@@ -43,11 +48,12 @@ void Population::reinitialize(){
 
 void Population::death_select()
 {
-  for ( int i = 0; i < bact; i++ )
+  for (int i = 0; i < bact; i++)
   {
-	  if ( pop_[i].alive() ){
+	  if (pop_[i].alive())
+    {
 	    double p = (double)rand() / (double)RAND_MAX;
-      if ( p < pdeath_ )
+      if (p < pdeath_)
       {
         pop_[i].to_die();
       }
@@ -55,25 +61,30 @@ void Population::death_select()
   }
 }
 
-void Population::death(Env& env){
-  for ( int i = 0; i < bact; i++ ){
-    if ( pop_[i].will_die() ) pop_[i].dead(env);
+void Population::death(Env& env)
+{
+  for (int i = 0; i < bact; i++)
+  {
+    if (pop_[i].will_die()) pop_[i].dead(env);
   }
 }
 
-void Population::metabolism(Env& env, double Raa, double Rab, double Rbb, double Rbc){
-  for ( int i = 0; i < bact; i++ ){
+void Population::metabolism(Env& env, double Raa, double Rab, double Rbb, double Rbc)
+{
+  for (int i = 0; i < bact; i++)
+  {
     pop_[i].metabolize(env, Raa, Rab, Rbb, Rbc);
   }
 }
 
-void Population::fill_gaps(){
+void Population::fill_gaps()
+{
   divide_list.clear();
   gaps_list.clear();
   std::vector<Bacteria> dead_list;
   for (int i = 0; i<bact; i++)
   {
-    if ( !pop_[i].alive() )
+    if (!pop_[i].alive())
     {
       dead_list.push_back(pop_[i]);
     }
@@ -93,17 +104,18 @@ void Population::fill_gaps(){
   }
 }
 
-int Population::moore_fitness(int x, int y){
+int Population::moore_fitness(int x, int y)
+{
   double fit_max = pop_[0].fmin();
   int pos_max = 2000;
-  for ( int i = -1; i <= 1; i++ )
+  for (int i = -1; i <= 1; i++)
   {
-    for ( int j = -1; j <= 1; j++ )
+    for (int j = -1; j <= 1; j++)
     {
-      if ( !is_out(x + i, y + j)
+      if (!is_out(x + i, y + j)
           && pop_[(x+i)*h_+y+j].alive()
           && !pop_[(x+i)*h_+y+j].will_die()
-          && !pop_[(x+i)*h_+y+j].will_divide() )
+          && !pop_[(x+i)*h_+y+j].will_divide())
       {
         int pos = (x + i)*h_ + y + j;
         double new_fit = pop_[pos].fitness();
@@ -118,17 +130,19 @@ int Population::moore_fitness(int x, int y){
   return pos_max;
 }
 
-bool Population::is_out(int x, int y){
+bool Population::is_out(int x, int y)
+{
   if (x>=w_ || x<0 || y>=h_ || y<0) return true;
   else return false;
 }
 
-void Population::division(){
+void Population::division()
+{
   fill_gaps();
-  for ( int i = 0; i < int(gaps_list.size()); i++ )
+  for (int i = 0; i < int(gaps_list.size()); i++)
   {
-	int fst = divide_list[i];
-	int scd = gaps_list[i];
+	  int fst = divide_list[i];
+	  int scd = gaps_list[i];
     pop_[fst].divide();
     pop_[scd].replace(pop_[fst]);
     pop_[fst].mutate();
@@ -136,12 +150,13 @@ void Population::division(){
   }
 }
 
-void Population::save(std::string fname){
-  for ( int x = 0; x<w_; x++ )
+void Population::save(std::string fname)
+{
+  for (int x = 0; x<w_; x++)
   {
-    for ( int y = 0; y<h_; y++ )
+    for (int y = 0; y<h_; y++)
     {
-      if ( !pop_[x*h_+y].alive() )
+      if (!pop_[x*h_+y].alive())
       {
         img_[ 3*(x*h_+y) ] = 10;
         img_[ 3*(x*h_+y) + 1 ] = 10;

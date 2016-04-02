@@ -35,6 +35,8 @@ public:
   //===================================================================
   //                          Setters
   //===================================================================
+  inline void set_a_init(int n_a_init);
+  inline void set_T(int n_T);
 protected:
   //===================================================================
   //                          Attributes
@@ -50,5 +52,13 @@ protected:
   Population pop_;
 };
 
+inline void Simulation::set_a_init(int n_a_init)
+{
+  env_.set_a_init(n_a_init);
+}
+inline void Simulation::set_T(int n_T)
+{
+  T_ = n_T;
+}
 
 #endif /* Simulation_hpp */

@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		353D82F01C74EF3E00D1E44B /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 353D82EF1C74EF3E00D1E44B /* main.cpp */; };
-		353D82F81C74EF5D00D1E44B /* Bacteria.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 353D82F61C74EF5D00D1E44B /* Bacteria.cpp */; };
-		353D82FB1C74F2A200D1E44B /* Env.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 353D82F91C74F2A200D1E44B /* Env.cpp */; };
-		353D82FE1C74F3E200D1E44B /* Population.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 353D82FC1C74F3E200D1E44B /* Population.cpp */; };
-		3575B56A1C76F13100DD9922 /* Simulation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3575B5681C76F13100DD9922 /* Simulation.cpp */; };
+		35A0BE491CAFB7620008D6D3 /* Bacteria.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 35A0BE411CAFB7620008D6D3 /* Bacteria.cpp */; };
+		35A0BE4A1CAFB7620008D6D3 /* Env.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 35A0BE431CAFB7620008D6D3 /* Env.cpp */; };
+		35A0BE4B1CAFB7620008D6D3 /* Population.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 35A0BE451CAFB7620008D6D3 /* Population.cpp */; };
+		35A0BE4C1CAFB7620008D6D3 /* Simulation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 35A0BE471CAFB7620008D6D3 /* Simulation.cpp */; };
+		35A0BE4E1CAFB7780008D6D3 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 35A0BE4D1CAFB7780008D6D3 /* main.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -28,15 +28,15 @@
 
 /* Begin PBXFileReference section */
 		353D82EC1C74EF3E00D1E44B /* ProjetC++ */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "ProjetC++"; sourceTree = BUILT_PRODUCTS_DIR; };
-		353D82EF1C74EF3E00D1E44B /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		353D82F61C74EF5D00D1E44B /* Bacteria.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Bacteria.cpp; sourceTree = "<group>"; };
-		353D82F71C74EF5D00D1E44B /* Bacteria.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Bacteria.hpp; sourceTree = "<group>"; };
-		353D82F91C74F2A200D1E44B /* Env.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Env.cpp; sourceTree = "<group>"; };
-		353D82FA1C74F2A200D1E44B /* Env.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Env.hpp; sourceTree = "<group>"; };
-		353D82FC1C74F3E200D1E44B /* Population.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Population.cpp; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
-		353D82FD1C74F3E200D1E44B /* Population.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Population.hpp; sourceTree = "<group>"; };
-		3575B5681C76F13100DD9922 /* Simulation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Simulation.cpp; sourceTree = "<group>"; };
-		3575B5691C76F13100DD9922 /* Simulation.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Simulation.hpp; sourceTree = "<group>"; };
+		35A0BE411CAFB7620008D6D3 /* Bacteria.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Bacteria.cpp; sourceTree = "<group>"; };
+		35A0BE421CAFB7620008D6D3 /* Bacteria.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Bacteria.hpp; sourceTree = "<group>"; };
+		35A0BE431CAFB7620008D6D3 /* Env.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Env.cpp; sourceTree = "<group>"; };
+		35A0BE441CAFB7620008D6D3 /* Env.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Env.hpp; sourceTree = "<group>"; };
+		35A0BE451CAFB7620008D6D3 /* Population.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Population.cpp; sourceTree = "<group>"; };
+		35A0BE461CAFB7620008D6D3 /* Population.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Population.hpp; sourceTree = "<group>"; };
+		35A0BE471CAFB7620008D6D3 /* Simulation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Simulation.cpp; sourceTree = "<group>"; };
+		35A0BE481CAFB7620008D6D3 /* Simulation.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Simulation.hpp; sourceTree = "<group>"; };
+		35A0BE4D1CAFB7780008D6D3 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +53,15 @@
 		353D82E31C74EF3E00D1E44B = {
 			isa = PBXGroup;
 			children = (
+				35A0BE4D1CAFB7780008D6D3 /* main.cpp */,
+				35A0BE411CAFB7620008D6D3 /* Bacteria.cpp */,
+				35A0BE421CAFB7620008D6D3 /* Bacteria.hpp */,
+				35A0BE431CAFB7620008D6D3 /* Env.cpp */,
+				35A0BE441CAFB7620008D6D3 /* Env.hpp */,
+				35A0BE451CAFB7620008D6D3 /* Population.cpp */,
+				35A0BE461CAFB7620008D6D3 /* Population.hpp */,
+				35A0BE471CAFB7620008D6D3 /* Simulation.cpp */,
+				35A0BE481CAFB7620008D6D3 /* Simulation.hpp */,
 				353D82EE1C74EF3E00D1E44B /* ProjetC++ */,
 				353D82ED1C74EF3E00D1E44B /* Products */,
 			);
@@ -69,15 +78,6 @@
 		353D82EE1C74EF3E00D1E44B /* ProjetC++ */ = {
 			isa = PBXGroup;
 			children = (
-				353D82EF1C74EF3E00D1E44B /* main.cpp */,
-				353D82F61C74EF5D00D1E44B /* Bacteria.cpp */,
-				353D82F71C74EF5D00D1E44B /* Bacteria.hpp */,
-				353D82FC1C74F3E200D1E44B /* Population.cpp */,
-				353D82FD1C74F3E200D1E44B /* Population.hpp */,
-				353D82F91C74F2A200D1E44B /* Env.cpp */,
-				353D82FA1C74F2A200D1E44B /* Env.hpp */,
-				3575B5681C76F13100DD9922 /* Simulation.cpp */,
-				3575B5691C76F13100DD9922 /* Simulation.hpp */,
 			);
 			path = "ProjetC++";
 			sourceTree = "<group>";
@@ -138,11 +138,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				353D82FB1C74F2A200D1E44B /* Env.cpp in Sources */,
-				3575B56A1C76F13100DD9922 /* Simulation.cpp in Sources */,
-				353D82F81C74EF5D00D1E44B /* Bacteria.cpp in Sources */,
-				353D82FE1C74F3E200D1E44B /* Population.cpp in Sources */,
-				353D82F01C74EF3E00D1E44B /* main.cpp in Sources */,
+				35A0BE4A1CAFB7620008D6D3 /* Env.cpp in Sources */,
+				35A0BE4B1CAFB7620008D6D3 /* Population.cpp in Sources */,
+				35A0BE491CAFB7620008D6D3 /* Bacteria.cpp in Sources */,
+				35A0BE4E1CAFB7780008D6D3 /* main.cpp in Sources */,
+				35A0BE4C1CAFB7620008D6D3 /* Simulation.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

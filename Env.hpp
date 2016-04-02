@@ -32,6 +32,7 @@ public:
   inline void set_ca (int x, int y, double newc);
   inline void set_cb (int x, int y, double newc);
   inline void set_cc (int x, int y, double newc);
+  inline void set_a_init(int n_a_init);
   void reinitialize ();
 //===================================================================
 //                          Methods
@@ -55,43 +56,39 @@ protected:
 //                          Inline declarations
 //===================================================================
 
-inline int Env::w() const
-{
+inline void Env::set_a_init(int n_a_init){
+  a_init_ = n_a_init;
+}
+
+inline int Env::w() const{
   return w_;
 }
 
-inline int Env::h() const
-{
+inline int Env::h() const{
   return h_;
 }
 
-inline double Env::a_out(int x, int y) const
-{
+inline double Env::a_out(int x, int y) const{
   return map_a[x*h_+y];
 }
 
-inline double Env::b_out(int x, int y) const
-{
+inline double Env::b_out(int x, int y) const{
   return map_b[x*h_+y];
 }
 
-inline double Env::c_out(int x, int y) const
-{
+inline double Env::c_out(int x, int y) const{
   return map_c[x*h_+y];
 }
 
-inline void Env::set_ca(int x, int y, double newc)
-{
+inline void Env::set_ca(int x, int y, double newc){
   map_a[x*h_+y] = newc;
 }
 
-inline void Env::set_cb(int x, int y, double newc)
-{
+inline void Env::set_cb(int x, int y, double newc){
   map_b[x*h_+y] = newc;
 }
 
-inline void Env::set_cc(int x, int y, double newc)
-{
+inline void Env::set_cc(int x, int y, double newc){
   map_c[x*h_+y] = newc;
 }
 
