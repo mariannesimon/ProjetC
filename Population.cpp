@@ -5,6 +5,7 @@
 //                   Constructors & Destructor
 //===================================================================
 
+/* Constructeur */
 Population::Population(int w, int h, double pmut, double pdeath, double fmin)
 {
   srand((unsigned int)time(NULL));
@@ -25,6 +26,7 @@ Population::Population(int w, int h, double pmut, double pdeath, double fmin)
   img_ = new unsigned char[w*h*3];
 }
 
+/* Destructeur */
 Population::~Population()
 {
   delete[] img_;
@@ -34,6 +36,7 @@ Population::~Population()
 //                          Setters
 //===================================================================
 
+/* reinitialize : réinitialisation pour toutes les bactéries */
 void Population::reinitialize()
 {
   for (int i=0; i<bact; i++)
@@ -46,6 +49,8 @@ void Population::reinitialize()
 //                          Methods
 //===================================================================
 
+/* death_select : sélection des bactéries qui devront mourir lors de
+ la même itération */
 void Population::death_select()
 {
   for (int i = 0; i < bact; i++)
@@ -61,6 +66,7 @@ void Population::death_select()
   }
 }
 
+/* death : mort des bactéries sélectionnées */
 void Population::death(Env& env)
 {
   for (int i = 0; i < bact; i++)
@@ -69,6 +75,7 @@ void Population::death(Env& env)
   }
 }
 
+/* metabolism : métabolisation pour toutes les bactéries */
 void Population::metabolism(Env& env, double Raa, double Rab, double Rbb, double Rbc)
 {
   for (int i = 0; i < bact; i++)
@@ -77,6 +84,8 @@ void Population::metabolism(Env& env, double Raa, double Rab, double Rbb, double
   }
 }
 
+/* fill_gaps : trouve les gaps, sélectionne les gaps où la division
+ est possible et les batéries associées à la division */
 void Population::fill_gaps()
 {
   divide_list.clear();
@@ -104,6 +113,8 @@ void Population::fill_gaps()
   }
 }
 
+/* moore_fitness : retourne la position de la bactérie ayant 
+ la meilleure fitness dans le voisinage de  moore du gap */
 int Population::moore_fitness(int x, int y)
 {
   double fit_max = pop_[0].fmin();
@@ -130,12 +141,15 @@ int Population::moore_fitness(int x, int y)
   return pos_max;
 }
 
+/* is_out : teste si la position est en dehors des cases */
 bool Population::is_out(int x, int y)
 {
   if (x>=w_ || x<0 || y>=h_ || y<0) return true;
   else return false;
 }
 
+/* division : division de la cellule mère et remplissage
+ du gap */
 void Population::division()
 {
   fill_gaps();
@@ -150,6 +164,7 @@ void Population::division()
   }
 }
 
+/* save : enregistre l'image en ppm */
 void Population::save(std::string fname)
 {
   for (int x = 0; x<w_; x++)

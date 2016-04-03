@@ -5,6 +5,7 @@
 //                   Constructors & Destructor
 //===================================================================
 
+/* Constructeur */
 Env::Env(int w, int h, double d, int a_init)
 {
   w_ = w;
@@ -22,6 +23,7 @@ Env::Env(int w, int h, double d, int a_init)
   }
 }
 
+/* Destructeur */
 Env::~Env(){
 }
 
@@ -29,6 +31,7 @@ Env::~Env(){
 //                          Methods
 //===================================================================
 
+/* cell_diff : réalise la diffusion des métabolites case par case */
 double Env::cell_diff(const std::vector<double>& map, int x, int y)
 {
   double new_c = map[x*h_+y];
@@ -43,6 +46,7 @@ double Env::cell_diff(const std::vector<double>& map, int x, int y)
   return new_c;
 }
 
+/* diff : diffusion de chaque métabolite pour toutes les cases */
 void Env::diff()
 {
   std::vector<double> tmp_a(w_*h_);
@@ -72,6 +76,7 @@ void Env::diff()
 //                          Setters
 //===================================================================
 
+/* reinitialize : réinitialise les concentrations */
 void Env::reinitialize()
 {
   for (int i = 0; i < w_*h_; i++)

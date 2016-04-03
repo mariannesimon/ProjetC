@@ -5,9 +5,7 @@
 //                Constructors & destructor
 //===================================================================
 
-Bacteria::Bacteria(){  
-}
-
+/* Constructeur */
 Bacteria::Bacteria(int x, int y, int gen, double fmin, double pmut){
   x_ = x;
   y_ = y;
@@ -25,6 +23,7 @@ Bacteria::Bacteria(int x, int y, int gen, double fmin, double pmut){
   to_divide_ = false;
 }
 
+/* Constructeur par copie */
 Bacteria::Bacteria(const Bacteria& bact){
   x_ = bact.x();
   y_ = bact.y();
@@ -42,6 +41,7 @@ Bacteria::Bacteria(const Bacteria& bact){
   to_divide_ = false;
 }
 
+/* Destructeur */
 Bacteria::~Bacteria(){
 }
 
@@ -49,6 +49,8 @@ Bacteria::~Bacteria(){
 //                          Methods
 //===================================================================
 
+/* replace : remplace une bactérie morte par une autre au moment
+ de la division */
 void Bacteria::replace(const Bacteria& bact)
 {
   gen_ = bact.gen();
@@ -62,6 +64,7 @@ void Bacteria::replace(const Bacteria& bact)
   to_divide_ = false;
 }
 
+/* dead : mort de la bactérie */
 void Bacteria::dead(Env& env)
 {
   alive_ = false;
@@ -71,6 +74,7 @@ void Bacteria::dead(Env& env)
   env.set_cc(x_, y_, env.c_out(x_, y_) + c_);
 }
 
+/* mutate : mutation aléatoire */
 void Bacteria::mutate()
 {
   if ( alive_ && divided_ )
@@ -85,6 +89,7 @@ void Bacteria::mutate()
   }
 }
 
+/* divide : division des concentrations de la cellule mère */
 void Bacteria::divide()
 {
   a_ = a_/2;
@@ -95,6 +100,7 @@ void Bacteria::divide()
   set_fitness();
 }
 
+/* met_a : réseau métabolique pour les individus de génotype Ga */
 void Bacteria::met_a(Env& env, double Raa, double Rab)
 {
   double a_out = env.a_out(x_, y_);
@@ -111,6 +117,7 @@ void Bacteria::met_a(Env& env, double Raa, double Rab)
   env.set_ca(x_, y_, a_out);
 }
 
+/* met_b : réseau métabolique pour les individus de génotype Gb */
 void Bacteria::met_b(Env& env, double Rbb, double Rbc)
 {
   double b_out = env.b_out(x_, y_);
@@ -127,6 +134,7 @@ void Bacteria::met_b(Env& env, double Rbb, double Rbc)
   env.set_cb(x_, y_, b_out);
 }
 
+/* metabolize : mise en place du réseau métabolique */
 void Bacteria::metabolize(Env& env,
                           double Raa, double Rab, double Rbb, double Rbc)
 {
@@ -136,15 +144,14 @@ void Bacteria::metabolize(Env& env,
     else met_b(env, Rbb, Rbc);
     set_fitness();
   }
-//  std::cout << gen_ << " > " << a_ << " " << b_ << " " << c_ << " | "
-//  << env.a_out(x_, y_) << " " << env.b_out(x_, y_) << " " <<
-//  env.c_out(x_, y_) << "\n";
 }
 
 //===================================================================
 //                          Setters
 //===================================================================
 
+/* reinitialize : à chaque pas de temps, réinitialise le statut de la
+ bactéries sauf si elle est morte */
 void Bacteria::reinitialize()
 {
   mutated_ = false;
@@ -153,6 +160,7 @@ void Bacteria::reinitialize()
   to_die_ = false;
 }
 
+/* set_fitness : modification de la fitness en fonction du génotype */
 void Bacteria::set_fitness()
 {
   if (gen_ == 0) fitness_ = b_;
@@ -160,11 +168,14 @@ void Bacteria::set_fitness()
   if (fitness_ < fmin_) fitness_ = 0;
 }
 
+/* to_die : bactérie sélectionnée pour la mort */
 void Bacteria::to_die()
 {
   to_die_ = true;
 }
 
+/* to_divide : bactérie sélectionnée pour être la cellule mère 
+ d'une division */
 void Bacteria::to_divide()
 {
   to_divide_ = true;
