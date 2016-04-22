@@ -25,5 +25,5 @@ p <- ggplot(data=df,
 p <- p + scale_color_manual(values=c("#2D2D2D",'#D19030','#56B4E9'),
                             labels=c("Extinction","Exclusion","Cohabitation"))
 p <- p + geom_point(size=1)
-p <- p + ggtitle("Diagramme de phase")
+p <- p + ggtitle("Diagramme de phase avec mutation")
 p

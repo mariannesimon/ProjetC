@@ -30,10 +30,9 @@ public:
 //===================================================================
 //                          Methods
 //===================================================================
-  void fill_gaps();
   int moore_fitness(int x, int y);
   bool is_out(int x, int y);
-  void division();
+  void fill_gaps();
   void death_select();
   void death(Env& env);
   void metabolism(Env& env, double Raa, double Rab, double Rbb, double Rbc);
@@ -46,20 +45,17 @@ public:
   inline int doomed() const;
   inline int gen_a() const;
   inline int gen_b() const;
-  inline int gaps_size() const;
 //===================================================================
 //                          Setters
 //===================================================================
   void reinitialize();
   inline void gen();
+  
 protected:
 //===================================================================
 //                          Attributes
 //===================================================================
   std::vector<Bacteria> pop_;
-  std::vector<int> gaps_list;
-  std::vector<int> divide_list;
-  std::vector<int> death_list;
   double pmut_;
   double pdeath_;
   int bact;
@@ -106,11 +102,6 @@ inline int Population::doomed() const
     }
   }
   return doomed;
-}
-
-inline int Population::gaps_size() const
-{
-  return int(gaps_list.size());
 }
 
 inline void Population::gen() {

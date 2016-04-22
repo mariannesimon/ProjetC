@@ -6,6 +6,9 @@
 //===================================================================
 
 /* Constructeur */
+Bacteria::Bacteria() {}
+
+/* Constructeur */
 Bacteria::Bacteria(int x, int y, int gen, double fmin, double pmut){
   x_ = x;
   y_ = y;
@@ -151,7 +154,7 @@ void Bacteria::metabolize(Env& env,
 //===================================================================
 
 /* reinitialize : à chaque pas de temps, réinitialise le statut de la
- bactéries sauf si elle est morte */
+ bactéries sauf l'attribut "alive" */
 void Bacteria::reinitialize()
 {
   mutated_ = false;

@@ -88,8 +88,8 @@ void Population::metabolism(Env& env, double Raa, double Rab, double Rbb, double
  est possible et les batéries associées à la division */
 void Population::fill_gaps()
 {
-  divide_list.clear();
-  gaps_list.clear();
+  std::vector<int> divide_list;
+  std::vector<int> gaps_list;
   std::vector<Bacteria> dead_list;
   for (int i = 0; i<bact; i++)
   {
@@ -110,6 +110,15 @@ void Population::fill_gaps()
       divide_list.push_back(div_pos);
       gaps_list.push_back(x*h_+y);
     }
+  }
+  for (int i = 0; i < int(gaps_list.size()); i++)
+  {
+    int fst = divide_list[i];
+    int scd = gaps_list[i];
+    pop_[fst].divide();
+    pop_[scd].replace(pop_[fst]);
+    pop_[fst].mutate();
+    pop_[scd].mutate();
   }
 }
 
@@ -146,22 +155,6 @@ bool Population::is_out(int x, int y)
 {
   if (x>=w_ || x<0 || y>=h_ || y<0) return true;
   else return false;
-}
-
-/* division : division de la cellule mère et remplissage
- du gap */
-void Population::division()
-{
-  fill_gaps();
-  for (int i = 0; i < int(gaps_list.size()); i++)
-  {
-	  int fst = divide_list[i];
-	  int scd = gaps_list[i];
-    pop_[fst].divide();
-    pop_[scd].replace(pop_[fst]);
-    pop_[fst].mutate();
-    pop_[scd].mutate();
-  }
 }
 
 /* save : enregistre l'image en ppm */

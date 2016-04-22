@@ -26,12 +26,11 @@ void Simulation::run()
 {
   for (int i = 0; i < tsim_; i++)
   {
-    std::cout << "Itération : " << i << "\n";
 	  if (i%T_ == 0) env_.reinitialize();
     pop_.reinitialize();
     env_.diff();
     pop_.death_select();
-    pop_.division();
+    pop_.fill_gaps();
     pop_.death(env_);
     pop_.metabolism(env_,Raa_,Rab_,Rbb_,Rbc_);
   }
